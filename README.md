@@ -74,7 +74,8 @@ The dashboard provides a comprehensive view of employee performance and recruitm
 
 ### Screenshots
 Here are some screenshots of the dashboard in action:
-![](images/Results.png)
+![](images/1.PNG)
+![](images/2.PNG)
 
 ## Licensing, Authors, Acknowledgements <a name="licensing"></a>
 - This project is an open-source project. You are free to use, modify, and distribute the code and data, provided that proper credit is given to the original authors. <br>
