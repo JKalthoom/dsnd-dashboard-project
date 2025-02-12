@@ -1,81 +1,82 @@
+## DSND-Dashboard-Project
 
-# Software Engineering for Data Scientists 
+In this project, I will apply what I have learned through the Data Engineering course provided by Udacity and use some skills like building Python packages, object-oriented programming, and creating a simple data dashboard to visualize the data to the user.
 
-This repository contains starter code for the **Software Engineering for Data Scientists** final project. Please reference your course materials for documentation on this repository's structure and important files. Happy coding!
+## Project Motivation <a name="motivation"></a>
+The primary motivation behind this project is to help the company's management retain top talent by providing a data-driven approach to monitor employee performance and predict recruitment risks. Key objectives: <br> <br>
+1. Address Employee Retention Concerns
+2. Leverage Data for Smarter Decisions
+3. Predict Recruitment Risk Using Machine Learning
+4. Improve Management Efficiency
+5. Standardize Performance Evaluation
 
-### Repository Structure
-```
-├── README.md
-├── assets
-│   ├── model.pkl
-│   └── report.css
-├── env
-├── python-package
-│   ├── employee_events
-│   │   ├── __init__.py
-│   │   ├── employee.py
-│   │   ├── employee_events.db
-│   │   ├── query_base.py
-│   │   ├── sql_execution.py
-│   │   └── team.py
-│   ├── requirements.txt
-│   ├── setup.py
-├── report
-│   ├── base_components
-│   │   ├── __init__.py
-│   │   ├── base_component.py
-│   │   ├── data_table.py
-│   │   ├── dropdown.py
-│   │   ├── matplotlib_viz.py
-│   │   └── radio.py
-│   ├── combined_components
-│   │   ├── __init__.py
-│   │   ├── combined_component.py
-│   │   └── form_group.py
-│   ├── dashboard.py
-│   └── utils.py
-├── requirements.txt
-├── start
-├── tests
-    └── test_employee_events.py
-```
+## Table of contents
+- [Project Motivation](#motivation)
+- [Installation](#installation)
+- [File Descriptions](#files)
+- [How to Interact](#interaction)
+- [Results](#results)
+- [Licensing, Authors, Acknowledgements](#licensing)
 
-### employee_events.db
+## Installation <a name="installation"></a>
+The whole project is provided above as Python scripts, it should work properly in the terminal by entering the following codes in sequence: <br>
+- First, open the terminal
+- Then go to the project directory by typing: cd (the path of the whole project). For example, cd C:\Desktop\dsnd-dashboard-project
+- After that you should create your virtual environment by typing: python -m venv env
+- Then you should activate the environment by typing: env\Scripts\activate
+- After that you should install dependencies by typing: pip install -r requirements.txt
+- Now you have to make sure that you are in the root directory of the project and run this command: python report/dashboard.py
+- Finally, after running the command the terminal should provide you with an address and you should write it down in your browser, the address should look something like this: http://localhost:5000
 
-```mermaid
-erDiagram
+## File Descriptions <a name="files"></a>
 
-  employee {
-    INTEGER employee_id PK
-    TEXT first_name
-    TEXT last_name
-    INTEGER team_id
-    
-  }
+### **python-package/**
+Contains the core Python package for data handling and SQL queries.
+- **employee.py**: Manages employee-specific data queries.
+- **team.py**: Handles team-related data queries.
+- **query_base.py**: Defines base classes for reusable SQL queries.
+- **sql_execution.py**: Executes SQL queries using decorators for efficiency.
+- **employee_events.db**: SQLite database storing employee and event data.
 
-  employee_events {
-    TEXT event_date
-    INTEGER employee_id FK
-    INTEGER team_id FK
-    INTEGER positive_events
-    INTEGER negative_events
-  }
+### **report/**
+Code for building the interactive dashboard using FastHTML.
+- **dashboard.py**: Main file that integrates all components and defines routes.
+- **utils.py**: Utility functions, including model loading and file path management.
 
-  notes {
-    INTEGER employee_id PK
-    INTEGER team_id PK
-    TEXT note
-    TEXT note_date PK
-  }
+### **tests/**
+Test scripts to validate database tables and functions using `pytest`.
+- **test_employee_events.py**: Unit tests for database structure and query accuracy.
 
-  team {
-    INTEGER team_id PK
-    TEXT team_name
-    TEXT shift
-    TEXT manager_name
-  }
+### **Other Files**
+- **requirements.txt**: Lists all project dependencies for easy setup.
+- **assets/**: Stores static files like the trained ML model (`model.pkl`) and CSS styles.
 
-  team ||--o{ employee_events : "team_id"
-  employee ||--o{ employee_events : "employee_id"
-  notes }o--o{ employee_events : ""
-```
+## How to Interact <a name="interaction"></a>
+### Explore Dashboard Features
+- **Switch Between Employee and Team Views:**
+  - Use the radio buttons to select **Employee** or **Team**.
+- **Select Profiles:**
+  - Choose an employee or team from the dropdown list.
+- **View Data Visualizations:**
+  - **Line Chart:** Shows cumulative positive and negative event trends.
+  - **Bar Chart:** Displays predicted recruitment risk.
+- **Check Notes:**
+  - Scroll down to view performance-related notes for the selected profile.
+
+## Results <a name="results"></a>
+
+### Dashboard Overview
+The dashboard provides a comprehensive view of employee performance and recruitment risk. It includes the following key components:
+1. Employee/Team Selection
+2. Event Counts
+3. Recruitment Risk Prediction
+4. Notes
+
+### Screenshots
+Here are some screenshots of the dashboard in action:
+![](images/Results.png)
+
+## Licensing, Authors, Acknowledgements <a name="licensing"></a>
+- This project is an open-source project. You are free to use, modify, and distribute the code and data, provided that proper credit is given to the original authors. <br>
+- This project was created by (Jawad Kalthoom), an AI student currently pursuing a data science nanodegree. You can reach out to me on <a href="https://www.linkedin.com/in/jawad-kalthoom/"><strong>LinkedIn</strong></a> or <a href="https://github.com/JKalthoom"><strong>GitHub</strong></a> for any questions or collaborations. <br>
+- Finally, I would like to thank Appen for the dataset and for making it accessible, and my instructors from Udacity for their guidance.
